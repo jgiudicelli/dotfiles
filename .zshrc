@@ -8,11 +8,8 @@ alias e=vim
 alias vi=vim
 alias ack=ack-grep
 
-#export PATH="/usr/local/php5/bin:/usr/local/mysql/bin:$PATH"
-
 autoload colors zsh/terminfo
 autoload -U promptinit && promptinit
-#prompt clint
 if [[ "$terminfo[colors]" -ge 8 ]]; then
 colors
 fi
