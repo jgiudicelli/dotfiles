@@ -17,6 +17,8 @@ set showmatch
 set ai "Auto indent
 set si "Smart indent
 set number
+set cc=80
+hi ColorColumn ctermbg=grey guibg=darkgrey
 
 " map invert case to tilde ~
 set tildeop
