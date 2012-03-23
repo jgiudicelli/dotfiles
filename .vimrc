@@ -4,7 +4,7 @@
 " use pathogen to load plugins
 call pathogen#infect()
 
-" :so ~/.vim/plugin/minibufexpl.vim
+:so ~/.vim/autoload/minibufexpl.vim
 
 set wildmenu "Turn on WiLd menu
 set so=7
