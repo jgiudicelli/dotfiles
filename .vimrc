@@ -4,7 +4,17 @@
 " use pathogen to load plugins
 call pathogen#infect()
 
-:so ~/.vim/autoload/minibufexpl.vim
+:so ~/.vim/autoload/bufexplorer.vim
+
+" disable arrow keys
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+nnoremap   <Up>     <NOP>
+nnoremap   <Down>   <NOP>
+nnoremap   <Left>   <NOP>
+nnoremap   <Right>  <NOP>
 
 set wildmenu "Turn on WiLd menu
 set so=7
