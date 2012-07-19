@@ -1,12 +1,13 @@
 " When vimrc is edited, reload it
-:autocmd! bufwritepost .vimrc source ~/.vimrc
+":autocmd! bufwritepost .vimrc source ~/.vimrc
 
 " use pathogen to load plugins
-call pathogen#infect()
+"call pathogen#infect()
 
-:so ~/.vim/autoload/bufexplorer.vim
+":so ~/.vim/autoload/bufexplorer.vim
 
 " disable arrow keys
+inoremap jj <esc>
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
 inoremap  <Left>   <NOP>
@@ -31,6 +32,7 @@ set list
 set cc=80
 "hi ColorColumn ctermbg=232 guibg=257
 hi ColorColumn ctermbg=darkgrey
+hi ColorColumn ctermbg=white
 
 " map invert case to tilde ~
 set tildeop
