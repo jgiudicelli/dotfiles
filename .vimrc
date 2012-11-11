@@ -2,7 +2,7 @@
 ":autocmd! bufwritepost .vimrc source ~/.vimrc
 
 " use pathogen to load plugins
-"call pathogen#infect()
+call pathogen#infect()
 
 ":so ~/.vim/autoload/bufexplorer.vim
 
@@ -17,6 +17,7 @@ nnoremap   <Down>   <NOP>
 nnoremap   <Left>   <NOP>
 nnoremap   <Right>  <NOP>
 
+set noswapfile
 set wildmenu "Turn on WiLd menu
 set so=7
 set diffopt+=iwhite
