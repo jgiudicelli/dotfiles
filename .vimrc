@@ -1,3 +1,8 @@
+" install
+" https://github.com/tpope/vim-pathogen
+" https://github.com/tpope/vim-rails
+" https://github.com/scrooloose/nerdtree
+
 " When vimrc is edited, reload it
 ":autocmd! bufwritepost .vimrc source ~/.vimrc
 
