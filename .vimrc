@@ -1,15 +1,20 @@
 " install
-" https://github.com/tpope/vim-pathogen
-" https://github.com/tpope/vim-rails
-" https://github.com/scrooloose/nerdtree
+"mkdir -p ~/.vim/autoload ~/.vim/bundle; \
+"curl -Sso ~/.vim/autoload/pathogen.vim \
+"    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+" cd ~/.vim/bundle
+" git clone git://github.com/tpope/vim-rails.git
+" git clone https://github.com/scrooloose/nerdtree.git
+" git clone git://github.com/garbas/vim-snipmate.git
+" git clone https://github.com/tomtom/tlib_vim.git
+" git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
+" git clone https://github.com/honza/snipmate-snippets.git
 
 " When vimrc is edited, reload it
-":autocmd! bufwritepost .vimrc source ~/.vimrc
+:autocmd! bufwritepost .vimrc source ~/.vimrc
 
 " use pathogen to load plugins
 call pathogen#infect()
-
-":so ~/.vim/autoload/bufexplorer.vim
 
 " disable arrow keys
 inoremap jj <esc>
@@ -47,7 +52,10 @@ set tildeop
 set tags=./tags
 
 " use ack instead of grep
-set grepprg=ack
+set grepprg=ack-grep
+" remap next and previous grep matches
+map <C-n> :cn <CR>
+map <C-p> :cp <CR>
 
 " map leader key
 let mapleader='='
@@ -56,6 +64,7 @@ let mapleader='='
 map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+
 
 :ab #c ####################################
 set cursorline                  " highlight current line
