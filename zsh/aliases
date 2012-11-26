@@ -1,0 +1,6 @@
+alias lstree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//â€“/g' -e 's/^/ /' -e 's/-/|/'"
+alias l='ls -l'
+alias a='ls -la'
+alias e=vim
+alias vi=vim
+alias ack=ack-grep
