@@ -9,6 +9,7 @@
 " git clone https://github.com/tomtom/tlib_vim.git
 " git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
 " git clone https://github.com/honza/snipmate-snippets.git
+" git clone git://github.com/tomtom/tcomment_vim.git
 
 " When vimrc is edited, reload it
 :autocmd! bufwritepost .vimrc source ~/.vimrc
