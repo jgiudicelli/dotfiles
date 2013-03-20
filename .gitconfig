@@ -1,0 +1,12 @@
+[user]
+  name = Jerome Giudicelli
+  email = jayrom@gmail.com
+[color]
+  ui = true
+[alias]
+  st = status
+  co = checkout
+  ci = commit
+  br = branch
+  p = pull
+  lg = !zsh -c 'git log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
