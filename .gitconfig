@@ -9,4 +9,4 @@
   ci = commit
   br = branch
   p = pull
-  lg = !zsh -c 'git log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
