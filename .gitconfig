@@ -10,3 +10,5 @@
   br = branch
   p = pull
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[apply]                                                                                                                                 │Started GET "/users/" for 10.10.10.194 at 2013-03-25 15:51:04 -0400                                                                                            
+  whitespace = nowarn
