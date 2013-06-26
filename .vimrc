@@ -28,7 +28,9 @@ nnoremap   <Down>   <NOP>
 nnoremap   <Left>   <NOP>
 nnoremap   <Right>  <NOP>
 
+syntax on
 set noswapfile
+set hidden
 set wildmenu "Turn on WiLd menu
 set so=7
 set diffopt+=iwhite
