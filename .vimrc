@@ -1,10 +1,21 @@
+" install
+"mkdir -p ~/.vim/autoload ~/.vim/bundle; \
+"curl -Sso ~/.vim/autoload/pathogen.vim \
+"    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+" cd ~/.vim/bundle
+" git clone git://github.com/tpope/vim-rails.git
+" git clone https://github.com/scrooloose/nerdtree.git
+" git clone git://github.com/garbas/vim-snipmate.git
+" git clone https://github.com/tomtom/tlib_vim.git
+" git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
+" git clone https://github.com/honza/snipmate-snippets.git
+" git clone git://github.com/tomtom/tcomment_vim.git
+
 " When vimrc is edited, reload it
-":autocmd! bufwritepost .vimrc source ~/.vimrc
+:autocmd! bufwritepost .vimrc source ~/.vimrc
 
 " use pathogen to load plugins
-"call pathogen#infect()
-
-":so ~/.vim/autoload/bufexplorer.vim
+call pathogen#infect()
 
 " disable arrow keys
 inoremap jj <esc>
@@ -17,6 +28,8 @@ nnoremap   <Down>   <NOP>
 nnoremap   <Left>   <NOP>
 nnoremap   <Right>  <NOP>
 
+syntax on
+set noswapfile
 set wildmenu "Turn on WiLd menu
 set so=7
 set diffopt+=iwhite
@@ -29,6 +42,7 @@ set ai "Auto indent
 set si "Smart indent
 set number
 set list
+set listchars=tab:▸\ ,trail:.,eol:¬
 set cc=80
 "hi ColorColumn ctermbg=232 guibg=257
 hi ColorColumn ctermbg=darkgrey
@@ -40,8 +54,9 @@ set tildeop
 " set tags dir
 set tags=./tags
 
-" use ack instead of grep
-set grepprg=ack
+" remap next and previous grep matches
+map <C-n> :cn <CR>
+map <C-p> :cp <CR>
 
 " map leader key
 let mapleader='='
@@ -50,6 +65,7 @@ let mapleader='='
 map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+
 
 :ab #c ####################################
 set cursorline                  " highlight current line
