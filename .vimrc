@@ -30,6 +30,7 @@ nnoremap   <Right>  <NOP>
 
 syntax on
 set noswapfile
+set hidden
 set wildmenu "Turn on WiLd menu
 set so=7
 set diffopt+=iwhite
@@ -54,6 +55,8 @@ set tildeop
 " set tags dir
 set tags=./tags
 
+" use ack instead of grep
+set grepprg=ack
 " remap next and previous grep matches
 map <C-n> :cn <CR>
 map <C-p> :cp <CR>

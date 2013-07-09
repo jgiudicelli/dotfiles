@@ -1,11 +1,6 @@
-# .zshrc
-# created by tkaemming on 2009-04-08
-
-alias lstree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//â€“/g' -e 's/^/ /' -e 's/-/|/'"
-alias l='ls -l'
-alias a='ls -la'
-alias e=vim
-alias vi=vim
+. ~/dotfiles/zsh/aliases
+. ~/dotfiles/zsh/home_linux
+. ~/dotfiles/zsh/work
 
 autoload colors zsh/terminfo
 autoload -U promptinit && promptinit
@@ -25,7 +20,7 @@ git_prompt_info() {
 }
 
 setopt prompt_subst
-PROMPT="%{$fg[green]%}<%n@%m>%{$reset_color%} %{$fg_bold[magenta]%}%h%{$reset_color%} %# "
+PROMPT="%* %{$fg[green]%}<%n@%m>%{$reset_color%} %{$fg_bold[magenta]%}%h%{$reset_color%} %# "
 RPROMPT='$PR_YELLOW$(git_prompt_info)$PR_GREEN%~% $PR_NO_COLOR'
 SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
 EDITOR="vim"
