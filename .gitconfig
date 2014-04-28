@@ -9,8 +9,14 @@
   ci = commit
   br = branch
   p = pull
+  ph = push origin HEAD
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [apply]
   whitespace = nowarn
 [core]
   editor = vim
+[push]
+	default = simple
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

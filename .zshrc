@@ -21,7 +21,7 @@ git_prompt_info() {
 
 setopt prompt_subst
 PROMPT="%* %{$fg[green]%}<%n@%m>%{$reset_color%} %{$fg_bold[magenta]%}%h%{$reset_color%} %# "
-RPROMPT='$PR_YELLOW$(git_prompt_info)$PR_GREEN%~% $PR_NO_COLOR'
+RPROMPT='%F{green}$(git_prompt_info)$PR_MAGENTA%~% $PR_NO_COLOR'
 SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
 EDITOR="vim"
 
@@ -131,5 +131,7 @@ zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
 
-PATH=/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+PATH=$PATH:$HOME/.rvm/bin:/usr/local/smlnj/bin
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+export PATH="$HOME/.rbenv/bin:/usr/local/bin:$PATH"
+eval "$(rbenv init -)"
