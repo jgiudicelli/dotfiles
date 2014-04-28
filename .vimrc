@@ -49,6 +49,7 @@ set showmatch
 set ai "Auto indent
 set si "Smart indent
 set list
+set listchars=tab:▸\ ,trail:.,eol:¬
 set cc=80
 "hi ColorColumn ctermbg=232 guibg=257
 " hi ColorColumn ctermbg=darkgrey
@@ -61,7 +62,7 @@ set tildeop
 set tags=./tags
 
 " use ack instead of grep
-set grepprg=ack-grep
+set grepprg=ack
 " remap next and previous grep matches
 map <C-n> :cn <CR>
 map <C-p> :cp <CR>
