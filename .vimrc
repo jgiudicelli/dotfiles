@@ -10,6 +10,8 @@
 " git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
 " git clone https://github.com/honza/snipmate-snippets.git
 " git clone git://github.com/tomtom/tcomment_vim.git
+" git clone https://github.com/terryma/vim-multiple-cursors.git
+" git clone git://github.com/majutsushi/tagbar
 
 " When vimrc is edited, reload it
 :autocmd! bufwritepost .vimrc source ~/.vimrc
@@ -27,8 +29,13 @@ nnoremap   <Up>     <NOP>
 nnoremap   <Down>   <NOP>
 nnoremap   <Left>   <NOP>
 nnoremap   <Right>  <NOP>
+nmap <F8> :TagbarToggle<CR>
 
 syntax on
+set background=light
+colorscheme solarized
+set relativenumber
+set number
 set noswapfile
 set hidden
 set wildmenu "Turn on WiLd menu
@@ -41,11 +48,10 @@ set bg=dark
 set showmatch
 set ai "Auto indent
 set si "Smart indent
-set number
 set list
 set cc=80
 "hi ColorColumn ctermbg=232 guibg=257
-hi ColorColumn ctermbg=darkgrey
+" hi ColorColumn ctermbg=darkgrey
 hi ColorColumn ctermbg=white
 
 " map invert case to tilde ~
@@ -61,12 +67,14 @@ map <C-n> :cn <CR>
 map <C-p> :cp <CR>
 
 " map leader key
-let mapleader='='
+let mapleader=';'
 
 " edit new file in same dir as curent
 map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+map <Leader>r :set rnu
+map <Leader>n :set number
 
 
 :ab #c ####################################
@@ -89,3 +97,6 @@ function! HasPaste()
     endif
 endfunction
 
+" SML make code {{{
+autocmd FileType sml setlocal makeprg=sml\ -P\ full\ '%'
+" }}}
