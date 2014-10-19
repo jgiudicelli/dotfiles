@@ -21,6 +21,7 @@
 " git clone git://github.com/tpope/vim-rails.git
 " git clone git@github.com:vim-ruby/vim-ruby.git
 " git clone git@github.com:tpope/vim-fugitive.git
+" git clone https://github.com/rizzatti/dash.vim.git
 
 " When vimrc is edited, reload it
 :autocmd! bufwritepost .vimrc source ~/.vimrc
