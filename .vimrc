@@ -3,92 +3,126 @@
 "curl -Sso ~/.vim/autoload/pathogen.vim \
 "    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 " cd ~/.vim/bundle
-" git clone git://github.com/tpope/vim-rails.git
+
 " git clone https://github.com/scrooloose/nerdtree.git
+
+" git clone https://github.com/honza/vim-snippets.git
 " git clone git://github.com/garbas/vim-snipmate.git
+" needed for vim-snipmate
 " git clone https://github.com/tomtom/tlib_vim.git
 " git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
-" git clone https://github.com/honza/snipmate-snippets.git
+
 " git clone git://github.com/tomtom/tcomment_vim.git
 " git clone https://github.com/terryma/vim-multiple-cursors.git
 " git clone git://github.com/majutsushi/tagbar
+" git clone https://github.com/bling/vim-airline.git¬
+" git clone git@github.com:kien/ctrlp.vim.git¬
+" git clone git@github.com:tpope/vim-surround.git
+" git clone git://github.com/tpope/vim-rails.git
+" git clone git@github.com:vim-ruby/vim-ruby.git
+" git clone git@github.com:tpope/vim-fugitive.git
 
 " When vimrc is edited, reload it
 :autocmd! bufwritepost .vimrc source ~/.vimrc
+" open .vimrc in a v split
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " use pathogen to load plugins
 call pathogen#infect()
 
 " disable arrow keys
-inoremap jj <esc>
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-nnoremap   <Up>     <NOP>
-nnoremap   <Down>   <NOP>
-nnoremap   <Left>   <NOP>
-nnoremap   <Right>  <NOP>
-nmap <F8> :TagbarToggle<CR>
+nnoremap  <Up>     <NOP>
+nnoremap  <Down>   <NOP>
+nnoremap  <Left>   <NOP>
+nnoremap  <Right>  <NOP>
 
+noremap <F8> :TagbarToggle<CR>
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+" add line above return to command mode
+nnoremap - <S-o><Esc>
+" add line below return to command mode
+nnoremap _ o<Esc>
+
+set t_Co=256
 syntax on
-set background=light
+set background=dark
+" let g:solarized_termcolors = 256
 colorscheme solarized
+" colorscheme Tomorrow-Night-Eighties
+" colorscheme slate
 set relativenumber
 set number
 set noswapfile
 set hidden
 set wildmenu "Turn on WiLd menu
-set so=7
+set so=7 " scrolloff
 set diffopt+=iwhite
-set sw=2
+set sw=2 " shiftwidth
 set tabstop=2
 set expandtab
 set bg=dark
-set showmatch
 set ai "Auto indent
 set si "Smart indent
 set list
 set listchars=tab:▸\ ,trail:.,eol:¬
-set cc=80
-"hi ColorColumn ctermbg=232 guibg=257
-" hi ColorColumn ctermbg=darkgrey
-hi ColorColumn ctermbg=white
+set showmatch
+set backspace=indent,eol,start
+let g:gist_post_private = 1
+let g:gist_show_privates = 1
 
 " map invert case to tilde ~
 set tildeop
 
+set incsearch
+set hlsearch
+" searches are case insensitive
+set ignorecase
+" unless they contain at least one capital letter
+set smartcase
+
+set showcmd
 " set tags dir
-set tags=./tags
-
-" use ack instead of grep
-set grepprg=ack
+set tags=tags,./tags
+" use ag instead of grep
+set grepprg=ag
 " remap next and previous grep matches
-map <C-n> :cn <CR>
-map <C-p> :cp <CR>
-
-" map leader key
-let mapleader=';'
+nnoremap <C-n> :cn <CR>
+nnoremap <C-p> :cp <CR>
 
 " edit new file in same dir as curent
-map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>r :set rnu
-map <Leader>n :set number
+nnoremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <Leader>r :set rnu
+nnoremap <Leader>n :set number
+nnoremap <Leader>t :! bundle exec ruby -Itest %<CR>
+nnoremap <Leader>w <C-W><C-W>
 
+command! Debug :normal i require 'debugger';debugger;<ESC>
+command! Screenshot :normal i page.save_screenshot('/Users/jg/screenshot.png', full: true)<ESC>
 
-:ab #c ####################################
 set cursorline                  " highlight current line
-hi cursorline guibg=#333333     " highlight bg color of current line
-hi CursorColumn guibg=#333333   " highlight cursor
-set laststatus=2
-set statusline=\ %{HasPaste()}\ %w\ \ CWD:\%r%{CurDir()}%h\ \ \ %F%m%r%h\ \ \ \ %=Line:\ %l/%L:%c\ \ \
+set cc=80
 
-function! CurDir()
-    let curdir = substitute(getcwd(), '/home/jerome/', "~/", "g")
-    return curdir
+hi ColorColumn ctermbg=white
+hi CursorLineNr ctermfg=white
+
+set laststatus=2
+" set statusline=\ %{HasPaste()}\ %w\ \ CWD:\%r%{CurDir()}%h\ \ \ %F%m%r%h\ \ \ \ %=Line:\ %l/%L:%c\ \ \
+
+" toggle highlighting search results
+function! MapCR()
+  nnoremap <cr> :nohlsearch<cr>
 endfunction
+call MapCR()
+
+" function! CurDir()
+"     let curdir = substitute(getcwd(), '/home/jerome/', "~/", "g")
+"     return curdir
+" endfunction
 
 function! HasPaste()
     if &paste
@@ -97,6 +131,12 @@ function! HasPaste()
         return ''
     endif
 endfunction
+
+" reopen file on same line as when closed¬
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 
 " SML make code {{{
 autocmd FileType sml setlocal makeprg=sml\ -P\ full\ '%'
