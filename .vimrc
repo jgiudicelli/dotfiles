@@ -96,13 +96,13 @@ nnoremap <C-p> :cp <CR>
 nnoremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <Leader>r :set rnu
-nnoremap <Leader>n :set number
+nnoremap <Leader>r :set rnu!
+nnoremap <Leader>n :set number!
 nnoremap <Leader>t :! bundle exec ruby -Itest %<CR>
 nnoremap <Leader>w <C-W><C-W>
 
 command! Debug :normal i require 'debugger';debugger;<ESC>
-command! Screenshot :normal i page.save_screenshot('/Users/jg/screenshot.png', full: true)<ESC>
+command! Screenshot :normal i page.save_screenshot('~/screenshot.png', full: true)<ESC>!
 
 set cursorline                  " highlight current line
 set cc=80
