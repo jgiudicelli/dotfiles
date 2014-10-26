@@ -1,6 +1,7 @@
-. ~/dotfiles/zsh/aliases
-. ~/dotfiles/zsh/home_linux
-. ~/dotfiles/zsh/work
+# Local config
+[[ -f ~/dotfiles/zsh/aliases ]] && source ~/dotfiles/zsh/aliases
+[[ -f ~/dotfiles/zsh/home_linux ]] && source ~/dotfiles/zsh/home_linux
+[[ -f ~/dotfiles/zsh/work ]] && source ~/dotfiles/zsh/work
 
 autoload colors zsh/terminfo
 autoload -U promptinit && promptinit
