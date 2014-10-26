@@ -23,10 +23,6 @@
 " git clone git@github.com:tpope/vim-fugitive.git
 " git clone https://github.com/rizzatti/dash.vim.git
 
-" When vimrc is edited, reload it
-:autocmd! bufwritepost .vimrc source ~/.vimrc
-" open .vimrc in a v split
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " use pathogen to load plugins
 call pathogen#infect()
@@ -47,7 +43,7 @@ nnoremap - <S-o><Esc>
 " add line below return to command mode
 nnoremap _ o<Esc>
 
-set t_Co=256
+set t_Co=256 " term colors
 syntax on
 set background=dark
 " let g:solarized_termcolors = 256
@@ -64,7 +60,6 @@ set diffopt+=iwhite
 set sw=2 " shiftwidth
 set tabstop=2
 set expandtab
-set bg=dark
 set ai "Auto indent
 set si "Smart indent
 set list
@@ -77,12 +72,16 @@ let g:gist_show_privates = 1
 " map invert case to tilde ~
 set tildeop
 
+" SEARCH
 set incsearch
 set hlsearch
 " searches are case insensitive
 set ignorecase
 " unless they contain at least one capital letter
 set smartcase
+" toggle highlighting search results
+nnoremap <CR> :nohlsearch<CR>
+
 
 set showcmd
 " set tags dir
@@ -93,52 +92,43 @@ set grepprg=ag
 nnoremap <C-n> :cn <CR>
 nnoremap <C-p> :cp <CR>
 
-" edit new file in same dir as curent
+" leader mapped commands
+" edit/split/vsplit new file in same dir as curent
 nnoremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <Leader>r :set rnu!
-nnoremap <Leader>n :set number!
+nnoremap <Leader>r :set relativenumber!<CR>
+nnoremap <Leader>n :set number!<CR>
+nnoremap <Leader>l :set list!<CR>
+" run test for current buffer
 nnoremap <Leader>t :! bundle exec ruby -Itest %<CR>
+" switch buffer split
 nnoremap <Leader>w <C-W><C-W>
+" show current color scheme
+nnoremap <Leader>c :echo g:colors_name<CR>
+" open .vimrc in a v split
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
 command! Debug :normal i require 'debugger';debugger;<ESC>
 command! Screenshot :normal i page.save_screenshot('~/screenshot.png', full: true)<ESC>!
 
-set cursorline                  " highlight current line
-set cc=80
-
+set cursorline " highlight current line
+set colorcolumn=80 " cc
 hi ColorColumn ctermbg=white
+" set line number color
 hi CursorLineNr ctermfg=white
 
 set laststatus=2
-" set statusline=\ %{HasPaste()}\ %w\ \ CWD:\%r%{CurDir()}%h\ \ \ %F%m%r%h\ \ \ \ %=Line:\ %l/%L:%c\ \ \
 
-" toggle highlighting search results
-function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
-endfunction
-call MapCR()
-
-" function! CurDir()
-"     let curdir = substitute(getcwd(), '/home/jerome/', "~/", "g")
-"     return curdir
-" endfunction
-
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    else
-        return ''
-    endif
-endfunction
-
+:augroup vimtricks
+: autocmd!
+: autocmd bufwritepost .vimrc source ~/.vimrc " When vimrc is edited, reload it :echom reloaded
 " reopen file on same line as when closed¬
-autocmd BufReadPost *
+: autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
+" SML make code
+": autocmd FileType sml setlocal makeprg=sml\ -P\ full\ '%'
+:augroup END
 
-" SML make code {{{
-autocmd FileType sml setlocal makeprg=sml\ -P\ full\ '%'
-" }}}
