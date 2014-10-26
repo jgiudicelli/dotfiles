@@ -108,6 +108,8 @@ nnoremap <Leader>w <C-W><C-W>
 nnoremap <Leader>c :echo g:colors_name<CR>
 " open .vimrc in a v split
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <Leader>bg :set bg=light<CR>
+nnoremap <Leader>bg! :set bg=dark<CR>
 
 command! Debug :normal i require 'debugger';debugger;<ESC>
 command! Screenshot :normal i page.save_screenshot('~/screenshot.png', full: true)<ESC>!

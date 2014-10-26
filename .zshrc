@@ -133,7 +133,7 @@ zstyle '*' single-ignored show
 
 PATH=$PATH:$HOME/.rvm/bin:/usr/local/smlnj/bin
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-export PATH="$HOME/.rbenv/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:$PATH"
 export RUBY_GC_MALLOC_LIMIT=60000000
 export RUBY_FREE_MIN=200000
 eval "$(rbenv init -)"
