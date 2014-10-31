@@ -57,12 +57,12 @@ set hidden
 set wildmenu "Turn on WiLd menu
 set so=7 " scrolloff
 set diffopt+=iwhite
-set sw=2 " shiftwidth
+set sw=2 " shiftwidth controls indentation through < & >
 set tabstop=2
 set expandtab
 set ai "Auto indent
 set si "Smart indent
-set list
+set list " show end of line char
 set listchars=tab:▸\ ,trail:.,eol:¬
 set showmatch
 set backspace=indent,eol,start
