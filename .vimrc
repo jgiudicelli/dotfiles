@@ -53,41 +53,35 @@ colorscheme solarized
 set relativenumber
 set number
 set noswapfile
-set hidden
+set hidden " don't complain about unsaved files when switching or closing
 set wildmenu "Turn on WiLd menu
 set so=7 " scrolloff
-set diffopt+=iwhite
+set diffopt+=iwhite " ignore whitespace differences in diffs
 set sw=2 " shiftwidth controls indentation through < & >
 set tabstop=2
-set expandtab
+set expandtab " use spaces instead of tabs
 set ai "Auto indent
 set si "Smart indent
 set list " show end of line char
 set listchars=tab:▸\ ,trail:.,eol:¬
 set showmatch
 set backspace=indent,eol,start
+set tildeop " map invert case to tilde ~
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
 
-" map invert case to tilde ~
-set tildeop
 
 " SEARCH
 set incsearch
 set hlsearch
-" searches are case insensitive
-set ignorecase
-" unless they contain at least one capital letter
-set smartcase
+set ignorecase " searches are case insensitive
+set smartcase " unless they contain at least one capital letter
 " toggle highlighting search results
 nnoremap <CR> :nohlsearch<CR>
 
-
 set showcmd
-" set tags dir
-set tags=tags,./tags
-" use ag instead of grep
-set grepprg=ag
+set tags=tags,./tags " set tags dir
+set grepprg=ag " use ag instead of grep
 " remap next and previous grep matches
 nnoremap <C-n> :cn <CR>
 nnoremap <C-p> :cp <CR>
