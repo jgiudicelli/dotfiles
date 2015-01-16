@@ -22,6 +22,7 @@
 " git clone git@github.com:vim-ruby/vim-ruby.git
 " git clone git@github.com:tpope/vim-fugitive.git
 " git clone https://github.com/rizzatti/dash.vim.git
+" git clone https://github.com/mattn/gist-vim.git
 
 
 " use pathogen to load plugins
