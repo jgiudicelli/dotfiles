@@ -19,10 +19,34 @@ git_prompt_info() {
   echo `ruby -e "print (%x{git branch 2> /dev/null}.split(/\n/).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '\1:')"`
 #  echo `ruby -e "print %x{git branch 2> /dev/null}.scan(/\*\s+(\w+)/) && "#{$1}:""`
 }
+function _update_ruby_version()
+{
+    typeset -g ruby_version=''
+    if which rbenv &> /dev/null; then
+      ruby_version="$(rbenv version | sed -e "s/ (set.*$//")"
+    fi
+#  reset gc settings based on ruby version; settings are different between 1.9* and 2.1*
+    if [ "${ruby_version}" != '2.1.5' ]; then
+        export RUBY_GC_MALLOC_LIMIT=60000000
+        export RUBY_FREE_MIN=200000
+        export RUBY_GC_HEAP_INIT_SLOTS=0
+        export RUBY_GC_HEAP_FREE_SLOTS=0
+        export RUBY_GC_HEAP_GROWTH_FACTOR=0
+        export RUBY_GC_HEAP_GROWTH_MAX_SLOTS=0
+      else
+        export RUBY_FREE_MIN=0
+        export RUBY_GC_MALLOC_LIMIT=0
+        export RUBY_GC_HEAP_INIT_SLOTS=600000
+        export RUBY_GC_HEAP_FREE_SLOTS=600000
+        export RUBY_GC_HEAP_GROWTH_FACTOR=1.25
+        export RUBY_GC_HEAP_GROWTH_MAX_SLOTS=300000
+    fi
+}
+chpwd_functions+=(_update_ruby_version)
 
 setopt prompt_subst
 PROMPT="%* %{$fg[green]%}<%n@%m>%{$reset_color%} %{$fg_bold[magenta]%}%h%{$reset_color%} %# "
-RPROMPT='%F{green}$(git_prompt_info)$PR_MAGENTA%~% $PR_NO_COLOR'
+RPROMPT='%F{green}$(git_prompt_info)$PR_MAGENTA%~% $PR_NO_COLOR %{$fg[green]%}${ruby_version} $PR_NO_COLOR'
 SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
 EDITOR="vim"
 
@@ -132,9 +156,6 @@ zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
 
-PATH=$PATH:$HOME/.rvm/bin:/usr/local/smlnj/bin
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+PATH=$PATH:/usr/local/smlnj/bin
 export PATH="$HOME/.rbenv/bin:/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:$PATH"
-export RUBY_GC_MALLOC_LIMIT=60000000
-export RUBY_FREE_MIN=200000
 eval "$(rbenv init -)"

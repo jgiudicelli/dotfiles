@@ -101,12 +101,12 @@ nnoremap <Leader>w <C-W><C-W>
 " show current color scheme
 nnoremap <Leader>c :echo g:colors_name<CR>
 " open .vimrc in a v split
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>m :vsplit $MYVIMRC<CR>
 nnoremap <Leader>bg :set bg=light<CR>
 nnoremap <Leader>bg! :set bg=dark<CR>
 
 command! Debug :normal i require 'debugger';debugger;<ESC>
-command! Screenshot :normal i page.save_screenshot('~/screenshot.png', full: true)<ESC>!
+command! Screenshot :normal i page.save_screenshot('./screenshot.png', full: true)<ESC>!
 
 set cursorline " highlight current line
 set colorcolumn=80 " cc
@@ -115,6 +115,13 @@ hi ColorColumn ctermbg=white
 hi CursorLineNr ctermfg=white
 
 set laststatus=2
+
+nnoremap <Leader>b :call CloseSplit()<CR>
+:function! CloseSplit()
+:  let filename = expand('%:p')
+:  bn
+:  execute ":bd ". filename
+:endfunction
 
 :augroup vimtricks
 : autocmd!
