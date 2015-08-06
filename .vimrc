@@ -1,7 +1,6 @@
 " install
 "mkdir -p ~/.vim/autoload ~/.vim/bundle; \
-"curl -Sso ~/.vim/autoload/pathogen.vim \
-"    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 " cd ~/.vim/bundle
 
 " git clone https://github.com/scrooloose/nerdtree.git
@@ -15,8 +14,8 @@
 " git clone git://github.com/tomtom/tcomment_vim.git
 " git clone https://github.com/terryma/vim-multiple-cursors.git
 " git clone git://github.com/majutsushi/tagbar
-" git clone https://github.com/bling/vim-airline.git¬
-" git clone git@github.com:kien/ctrlp.vim.git¬
+" git clone https://github.com/bling/vim-airline.git
+" git clone git@github.com:kien/ctrlp.vim.git
 " git clone git@github.com:tpope/vim-surround.git
 " git clone git://github.com/tpope/vim-rails.git
 " git clone git@github.com:vim-ruby/vim-ruby.git
@@ -40,9 +39,9 @@ nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 " add line above return to command mode
-nnoremap - <S-o><Esc>
+nnoremap _ <S-o><Esc>
 " add line below return to command mode
-nnoremap _ o<Esc>
+nnoremap - o<Esc>
 
 set t_Co=256 " term colors
 syntax on
@@ -68,6 +67,7 @@ set listchars=tab:▸\ ,trail:.,eol:¬
 set showmatch
 set backspace=indent,eol,start
 set tildeop " map invert case to tilde ~
+set encoding=utf-8
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
 
