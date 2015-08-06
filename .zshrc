@@ -45,7 +45,8 @@ function _update_ruby_version()
 chpwd_functions+=(_update_ruby_version)
 
 setopt prompt_subst
-PROMPT="%* %{$fg[green]%}<%n@%m>%{$reset_color%} %{$fg_bold[magenta]%}%h%{$reset_color%} %# "
+# PROMPT="%* %{$fg[green]%}<%n@%m>%{$reset_color%} %{$fg_bold[magenta]%}%h%{$reset_color%} %# "
+PROMPT="%* %{$fg[green]%}%n%{$reset_color%} %{$fg_bold[magenta]%}%h%{$reset_color%} %# "
 RPROMPT='%F{green}$(git_prompt_info)$PR_MAGENTA%~% $PR_NO_COLOR %{$fg[green]%}${ruby_version} $PR_NO_COLOR'
 SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
 EDITOR="vim"
@@ -157,5 +158,6 @@ zstyle ':completion:*:ssh:*' group-order \
 zstyle '*' single-ignored show
 
 PATH=$PATH:/usr/local/smlnj/bin
-export PATH="$HOME/.rbenv/bin:/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:$PATH"
-eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="$PATH:/Users/jg/rails/wa-devenv/deploy"
+eval "$(rbenv init - zsh)"
